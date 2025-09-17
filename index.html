@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Pro Background Remover</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <form action="" class="form" id="frm" autocomplete="off" novalidate>
+        <div class="content">
+          <header class="header">
+            <h2 class="h2">Remove Background From Images</h2>
+            <p class="muted">Upload a JPG or PNG (≤ 3MB). We’ll process it locally using Python <code>rembg</code>.</p>
+          </header>
+
+          <!-- Alerts / Toaster -->
+          <div id="alert" class="alert" role="alert" aria-live="polite" aria-atomic="true"></div>
+
+          <!-- Upload block -->
+          <div class="uploader">
+            <input type="file" id="img" accept="image/png, image/jpeg" aria-label="Choose image" />
+            <div class="drop" id="drop">
+              <img id="displayImage" alt="preview" />
+              <div class="drop-text">
+                <strong>Click to upload</strong>
+                <span>or drag & drop an image</span>
+                <span class="small muted">PNG or JPG, up to 3MB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Viewer switcher -->
+          <div class="viewer">
+            <div class="viewer-tabs" role="tablist">
+              <button type="button" class="tab active" id="tab-original" aria-selected="true" role="tab">Original</button>
+              <button type="button" class="tab" id="tab-removed" aria-selected="false" role="tab" disabled>Removed BG</button>
+            </div>
+
+            <div class="viewer-panels">
+              <div class="panel show" id="panel-original" role="tabpanel">
+                <img id="preview-original" alt="Original" />
+              </div>
+              <div class="panel" id="panel-removed" role="tabpanel">
+                <img id="preview-removed" alt="Removed background" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions">
+            <button type="submit" id="btn" class="primary" disabled>
+              <span class="btn-text">Remove Background</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+            <a id="download" class="ghost" download="removed-background.png" href="#" aria-disabled="true">Download PNG</a>
+          </div>
+
+          <footer class="foot muted small">
+            <span>Powered by <code>rembg</code> via Python. No file leaves your server.</span>
+          </footer>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
